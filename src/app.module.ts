@@ -6,6 +6,9 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { StaffModule } from './staff/staff.module';
+import { FileUploadModule } from './file-upload/file-upload.module';
+import { MinioClientModule } from './minio-client/minio-client.module';
+import { FileReadModule } from './file-read/file-read.module';
 
 @Module({
   imports: [
@@ -20,7 +23,10 @@ import { StaffModule } from './staff/staff.module';
         return dataSource;
       },
     }),
-    StaffModule
+    StaffModule,
+    MinioClientModule,
+    FileUploadModule,
+    FileReadModule,
   ],
   controllers: [AppController],
   providers: [AppService, MSSQLDBConfigService],
